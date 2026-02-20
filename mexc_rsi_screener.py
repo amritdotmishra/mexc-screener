@@ -156,15 +156,13 @@ def fetch_kline_data(symbol, interval_str, count=250):
                 # Actually, I'll write a small helper to detecting the format.
                 
                 return data["data"]
+                return data["data"]
             else:
-                print(f"[ERROR] API returned error for {symbol}: {data}")
-                return None
+                raise Exception(f"MEXC Error: {data}")
         else:
-            print(f"[ERROR] HTTP Error {response.status_code} for {symbol}")
-            return None
+            raise Exception(f"HTTP {response.status_code}: {response.text[:200]}")
     except Exception as e:
-        print(f"[ERROR] Exception fetching {symbol}: {e}")
-        return None
+        raise Exception(f"Request failed: {str(e)}")
 
 def calculate_rsi(prices, period=14):
     """Calculate RSI from a list of prices."""

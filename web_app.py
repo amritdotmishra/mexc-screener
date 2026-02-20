@@ -144,23 +144,30 @@ def screener_loop(session_id):
             })
 
             time.sleep(0.15)  # Rate limit
-            raw_data = fetch_kline_data(symbol, interval_str)
-
-            highs, lows, closes = [], [], []
-            if raw_data:
-                highs, lows, closes = parse_ohlc(raw_data)
-                if closes:
-                    refreshed_count += 1
+            try:
+                raw_data = fetch_kline_data(symbol, interval_str)
+                if raw_data:
+                    highs, lows, closes = parse_ohlc(raw_data)
+                    if closes:
+                        refreshed_count += 1
+                    else:
+                        push_event(session_id, "log", {
+                            "message": f"{symbol}: Failed to parse data.",
+                            "level": "error"
+                        })
                 else:
                     push_event(session_id, "log", {
-                        "message": f"{symbol}: Failed to parse data.",
+                        "message": f"{symbol}: Failed to fetch data (empty response).",
                         "level": "error"
                     })
-            else:
+            except Exception as e:
                 push_event(session_id, "log", {
-                    "message": f"{symbol}: Failed to fetch data.",
+                    "message": f"{symbol} Fetch Error: {str(e)}",
                     "level": "error"
                 })
+                # Pause longer if we hit a block
+                time.sleep(2)
+                continue
 
             if not closes:
                 continue
