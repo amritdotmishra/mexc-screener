@@ -352,6 +352,11 @@ btnStart.addEventListener('click', async () => {
                 config: currentConfig
             })
         });
+        if (!res.ok) {
+            addLog(`Failed to start screener: Server returned ${res.status} ${res.statusText}`, 'error');
+            btnStart.disabled = false;
+            return;
+        }
         const data = await res.json();
         if (data.status === 'started' || data.status === 'already_running') {
             setRunningState(true);
@@ -366,11 +371,15 @@ btnStart.addEventListener('click', async () => {
 btnStop.addEventListener('click', async () => {
     btnStop.disabled = true;
     try {
-        await fetch('/api/stop', {
+        const res = await fetch('/api/stop', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ session_id: sessionId })
         });
+        if (!res.ok) {
+            addLog(`Failed to stop screener: Server returned ${res.status}`, 'error');
+            return;
+        }
         setRunningState(false);
         addLog('Screener stopped.', 'warning');
     } catch (e) {
