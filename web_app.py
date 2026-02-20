@@ -3,6 +3,10 @@ MEXC RSI Screener - Web Dashboard
 Flask backend with per-client sessions and Server-Sent Events.
 Each browser visitor gets their own independent screener session.
 """
+# ── Critical: Patch standard library for gevent BEFORE any other imports ──
+from gevent import monkey
+monkey.patch_all()
+
 from flask import Flask, render_template, jsonify, request, Response
 import threading
 import json
