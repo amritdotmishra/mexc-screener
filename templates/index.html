@@ -45,20 +45,34 @@
                 <table id="data-table">
                     <thead>
                         <tr>
-                            <th>Symbol</th>
-                            <th>Price</th>
-                            <th>RSI</th>
-                            <th>Stoch %K</th>
-                            <th>Stoch %D</th>
-                            <th>EMA 200</th>
-                            <th>EMA 21</th>
-                            <th>ATR Ratio</th>
-                            <th>Trend</th>
-                            <th>Confidence</th>
-                            <th>R²</th>
-                            <th>Volatility</th>
-                            <th>HTF Trend</th>
-                            <th>Alerts</th>
+                            <th data-sort="symbol" data-type="string" class="sortable">Symbol <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="price" data-type="number" class="sortable">Price <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="rsi" data-type="number" class="sortable">RSI <span class="sort-icon"></span>
+                            </th>
+                            <th data-sort="stoch_k" data-type="number" class="sortable">Stoch %K <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="stoch_d" data-type="number" class="sortable">Stoch %D <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="ema_long" data-type="string" class="sortable">EMA 200 <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="ema_short" data-type="string" class="sortable">EMA 21 <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="atr_ratio" data-type="number" class="sortable">ATR Ratio <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="lr_trend" data-type="string" class="sortable">Trend <span id="th-trend-tf"
+                                    class="dim">()</span> <span class="sort-icon"></span></th>
+                            <th data-sort="lr_confidence" data-type="number" class="sortable">Confidence <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="lr_r_squared" data-type="number" class="sortable">R² <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="lr_volatility" data-type="string" class="sortable">Volatility <span
+                                    class="sort-icon"></span></th>
+                            <th data-sort="lr_htf_trend" data-type="string" class="sortable">HTF Trend <span
+                                    id="th-htf-tf" class="dim">()</span> <span class="sort-icon"></span></th>
+                            <th data-sort="alerts_count" data-type="number" class="sortable">Alerts <span
+                                    class="sort-icon"></span></th>
                         </tr>
                     </thead>
                     <tbody id="data-body">

@@ -275,6 +275,41 @@ thead th {
     position: sticky;
     top: 0;
     background: var(--bg-secondary);
+    z-index: 10;
+}
+
+th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s, background 0.2s;
+}
+
+th.sortable:hover {
+    color: var(--text-primary);
+    background: rgba(88, 166, 255, 0.08);
+}
+
+.sort-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+
+th.sortable:hover .sort-icon {
+    opacity: 0.7;
+}
+
+th.sortable.desc .sort-icon::after {
+    content: '▼';
+    opacity: 1;
+}
+
+th.sortable.asc .sort-icon::after {
+    content: '▲';
+    opacity: 1;
 }
 
 tbody td {
