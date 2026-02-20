@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Local data files (not needed for deployment)
+market_data.json
+config.json
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other project files not needed for the web app
+funding_rate_*.py
+funding_rate_*.md
+market_v*.py
+market_v*.md
+*.pine
+MEXC_Documentation.md
+API documentation.md
+linear_regression_guide.md
